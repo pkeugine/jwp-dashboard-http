@@ -52,10 +52,12 @@ public class RequestHandler implements Runnable {
     }
 
     private void deliverResponse(OutputStream outputStream, HttpResponse response) throws IOException {
-        final BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
-        bufferedWriter.write(response.print());
-        bufferedWriter.flush();
-        bufferedWriter.close();
+//        final BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+        outputStream.write(response.print());
+        outputStream.flush();
+//        bufferedWriter.write(response.print());
+//        bufferedWriter.flush();
+//        bufferedWriter.close();
     }
 
     private void close() {

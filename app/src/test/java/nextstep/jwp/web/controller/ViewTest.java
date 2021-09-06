@@ -24,7 +24,7 @@ class ViewTest {
 
         // when
         final View view = new View("/assets/chart-area.js");
-        final byte[] actual = view.render().getBytes();
+        final byte[] actual = view.render();
 
         // then
         assertThat(actual).isEqualTo(expected);
@@ -40,7 +40,7 @@ class ViewTest {
 
         // when
         final View view = new View("/css/styles.css");
-        final byte[] actual = view.render().getBytes();
+        final byte[] actual = view.render();
 
         // then
         assertThat(actual).isEqualTo(expected);

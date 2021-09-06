@@ -25,10 +25,10 @@ class HttpResponseTest {
 
         // when
         httpResponse.setBody(view);
-        final String responseAsString = httpResponse.print();
+        final String responseAsString = new String(httpResponse.print());
 
         // then
-        final byte[] bytes = view.render().getBytes();
+        final byte[] bytes = view.render();
         assertThat(responseAsString).contains(
                 "HTTP/1.1 200 OK ",
                 "Content-Type: text/html;charset=utf-8 ",
@@ -45,7 +45,7 @@ class HttpResponseTest {
 
         // when
         response.setStatus(status);
-        final String responseAsString = response.print();
+        final String responseAsString = new String(response.print());
 
         // then
         assertThat(responseAsString).contains("HTTP/1.1 401 Unauthorized ");

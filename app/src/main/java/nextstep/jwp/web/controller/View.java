@@ -40,7 +40,7 @@ public class View {
         return ContentType.HTML;
     }
 
-    public String render() {
+    public byte[] render() {
         try {
             return readFile(name + "." + contentType.getExtension());
         } catch (NullPointerException exception) {
@@ -48,11 +48,11 @@ public class View {
         }
     }
 
-    private String readFile(String fileName) {
+    private byte[] readFile(String fileName) {
         try {
             final URL url = getClass().getClassLoader().getResource(ROOT_DIRECTORY + fileName);
             final Path path = Paths.get(Objects.requireNonNull(url).getPath());
-            return new String(Files.readAllBytes(path));
+            return Files.readAllBytes(path);
         } catch (IOException e) {
             throw new InputException(ROOT_DIRECTORY + fileName);
         }

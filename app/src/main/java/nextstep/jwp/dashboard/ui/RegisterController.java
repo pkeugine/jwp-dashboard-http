@@ -32,7 +32,7 @@ public class RegisterController extends AbstractController {
         );
         validateNew(user);
         InMemoryUserRepository.save(user);
-        log.info("New User Registered. user id : {}, account : {}", user.getId(), user.getAccount());
+        log.info("New User Registered. user id : {}, account : {}, email : {}", user.getId(), user.getAccount(), user.getEmail());
         redirect(response, HOME_PAGE);
     }
 
